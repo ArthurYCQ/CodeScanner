@@ -271,16 +271,23 @@ extension CodeScannerView {
                 captureSession!.addOutput(photoOutput)
                 metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                 metadataOutput.metadataObjectTypes = parentView.codeTypes
-                metadataOutput.rectOfInterest = CGRect(
+                let rect = CGRect(
                     x: min(max(parentView.rectOfInterest.origin.x, 0), 1),
                     y: min(max(parentView.rectOfInterest.origin.y, 0), 1),
                     width: min(max(parentView.rectOfInterest.width, 0), 1),
                     height: min(max(parentView.rectOfInterest.height, 0), 1)
                   )
+                metadataOutput.rectOfInterest = convertRectToUse(rect: rect)
             } else {
                 didFail(reason: .badOutput)
                 return
             }
+        }
+        
+        private func convertRectToUse(rect: CGRect) -> CGRect{
+            let nX = 1 - rect.origin.x
+            let nW = 1 - rect.width
+            return CGRect(x: nX, y: rect.origin.y, width: nW, height: rect.height)
         }
 
         private func addViewFinder() {
