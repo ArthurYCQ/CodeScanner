@@ -277,7 +277,7 @@ extension CodeScannerView {
                     width: min(max(parentView.rectOfInterest.width, 0), 1),
                     height: min(max(parentView.rectOfInterest.height, 0), 1)
                   )
-                metadataOutput.rectOfInterest = convertRectToUse(rect: rect)
+                metadataOutput.rectOfInterest = rect
             } else {
                 didFail(reason: .badOutput)
                 return
