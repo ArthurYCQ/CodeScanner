@@ -82,6 +82,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
     public let manualSelect: Bool
     public let scanInterval: Double
     public let showViewfinder: Bool
+    public let rectOfInterest: CGRect
     public let requiresPhotoOutput: Bool
     public var simulatedData = ""
     public var shouldVibrateOnSuccess: Bool
@@ -97,6 +98,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
         manualSelect: Bool = false,
         scanInterval: Double = 2.0,
         showViewfinder: Bool = false,
+        rectOfInterest: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1),
         requiresPhotoOutput: Bool = true,
         simulatedData: String = "",
         shouldVibrateOnSuccess: Bool = true,
@@ -110,6 +112,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
         self.scanMode = scanMode
         self.manualSelect = manualSelect
         self.showViewfinder = showViewfinder
+        self.rectOfInterest = rectOfInterest
         self.requiresPhotoOutput = requiresPhotoOutput
         self.scanInterval = scanInterval
         self.simulatedData = simulatedData
